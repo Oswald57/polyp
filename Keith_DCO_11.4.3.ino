@@ -3,14 +3,36 @@
 //
 // 11.4.3
 //
-// SEND TARGETED SERIAL PACKET 9600 baud 
-//
-// LOCAL BUS MESSAGES
+
+/*
+ * A homebrew synth project using a bunch of AT328s (as in Arduino) as 'voices'.
+ * 
+ * Each 'voice' has four 'generators', and these are fed parameters by a 'supervisor',
+ * via a serial bus.
+ * 
+ * Timer interrupt code adapted from "synth.h" for Arduino, found on the net years ago.
+ * This was the inspiration by some genius from Denmark. Trying to track him down
+ * to credit him, I owe him much beer.
+ * 
+ * Ideas and code free for all, no let or hindrance. Feel free to do whatever.
+ * 
+ * 
+ * Keith Daniel
+ * Montreal, Canada
+ * 
+ * kdaniel@teksavvy.com
+ * 
+ * 25 February 2025
+ * 
+ */
+
 // 
-// SERIAL PACKET MANAGER EDITION II
 //
 //
-// 
+//    ADDED FLOAT FREQ TABLE
+//
+//    SERIAL PACKET MANAGER EDITION II
+//
 //
 //    'A' + four bytes amplitude [0..127]
 //
@@ -32,15 +54,12 @@
 // 
 
 
-
-
-
 // --------------------------------------------------------------------------------------------------------- DECLARES ----------------
 
 
 
 
-byte temp, lob, hib, n, i;
+byte temp, lob, hib, n, i;                                                           // global temporary slops, used in loops
 
 int freqValue;
 
